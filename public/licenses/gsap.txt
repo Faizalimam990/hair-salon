@@ -1,0 +1,5 @@
+GSAP and @gsap/react
+Copyright 2008–2026, GreenSock. All rights reserved.
+Subject to the Standard No Charge License: https://gsap.com/standard-license
+Full license: https://gsap.com/community/standard-license/
+Original license notices are retained in the distributed bundles.

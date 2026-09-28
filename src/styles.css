@@ -1,0 +1,2757 @@
+:root {
+  --ink: #33252e;
+  --body: #352d32;
+  --muted: #70646c;
+  --paper: #faf8f6;
+  --lilac: #e0d3ea;
+  --line: #e4dce1;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Manrope Variable', sans-serif;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 104px;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--body);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+}
+button:not(:disabled),
+a {
+  touch-action: manipulation;
+}
+button {
+  cursor: pointer;
+}
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #917597;
+  outline-offset: 5px;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+}
+h2 {
+  font-size: clamp(44px, 4.45vw, 67px);
+  line-height: 1.02;
+  letter-spacing: -1.7px;
+}
+p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.section-shell {
+  width: min(1280px, calc(100% - 112px));
+  margin-inline: auto;
+}
+.section-space {
+  padding-block: 112px;
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  margin-bottom: 23px;
+  font-weight: 600;
+}
+.section-label > span {
+  width: 7px;
+  height: 7px;
+  display: block;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 36px;
+  margin-bottom: 42px;
+}
+.section-heading-aside {
+  padding-bottom: 3px;
+}
+.section-heading-aside p {
+  font-size: 13px;
+}
+.text-link,
+.quiet-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  min-height: 44px;
+}
+.text-link {
+  padding: 6px 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  width: fit-content;
+}
+.text-link svg,
+.quiet-link svg {
+  flex-shrink: 0;
+  transition: transform 0.25s;
+}
+.text-link:hover svg,
+.quiet-link:hover svg {
+  transform: translate(3px, -3px);
+}
+.quiet-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.skip-link {
+  position: fixed;
+  z-index: 1500;
+  top: 10px;
+  left: 10px;
+  background: var(--ink);
+  color: white;
+  padding: 14px;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  transition:
+    background 0.35s,
+    box-shadow 0.35s;
+  background: rgba(250, 248, 246, 0.95);
+}
+.site-header.is-scrolled {
+  background: rgba(250, 248, 246, 0.92);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 2px 25px #33252e0a;
+}
+.nav-inner {
+  height: 94px;
+  width: min(1360px, calc(100% - 96px));
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  transition: height 0.3s;
+}
+.is-scrolled .nav-inner {
+  height: 76px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex-shrink: 0;
+}
+.brand-symbol {
+  font-family: var(--serif);
+  font-size: 35px;
+  letter-spacing: -4px;
+  white-space: nowrap;
+  padding-right: 4px;
+  line-height: 1;
+}
+.brand-symbol > span {
+  font-style: italic;
+  font-size: 40px;
+  margin: 0 2px;
+}
+.brand-name {
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: -0.2px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 1px solid #d3c8cf;
+  padding-left: 13px;
+}
+.brand-name > span {
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 1.3px;
+}
+.desktop-nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.desktop-nav a {
+  font-size: 11px;
+  position: relative;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.desktop-nav a:after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+.desktop-nav a:hover:after {
+  transform: scaleX(1);
+}
+.nav-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.nav-actions .MuiButton-root {
+  font-size: 11px;
+  min-height: 43px;
+  padding: 12px 21px;
+}
+.nav-actions .menu-toggle {
+  display: none;
+}
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.08fr 1fr;
+  min-height: 790px;
+  padding-top: 155px;
+  padding-bottom: 95px;
+  gap: 45px;
+  align-items: center;
+}
+.hero-location {
+  font-size: 10px;
+  color: var(--body);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+.tiny-spark {
+  font-size: 22px;
+  font-weight: 300;
+}
+.hero h1 {
+  font-size: clamp(76px, 7.8vw, 119px);
+  line-height: 0.9;
+  letter-spacing: -4px;
+  margin-left: -4px;
+}
+.hero-heading-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 12px;
+}
+.hero-heading-line > span {
+  display: block;
+}
+.hero h1 em {
+  font-weight: 400;
+}
+.hero-intro {
+  font-size: 13px;
+  line-height: 1.95;
+  margin-top: 24px;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 31px;
+  flex-wrap: wrap;
+}
+.hero-actions .MuiButton-root {
+  font-size: 11px;
+  padding: 17px 25px;
+}
+.hero-actions .quiet-link {
+  font-size: 11px;
+}
+.hero-social {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: fit-content;
+  margin-top: 40px;
+}
+.google-mark {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 31px;
+  line-height: 1;
+  color: #4285f4;
+}
+.rating-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: #926b41;
+}
+.review-small {
+  font-size: 9px;
+  color: var(--muted);
+  display: block;
+  margin-top: 4px;
+}
+.hero-visual {
+  position: relative;
+  height: 535px;
+  margin-right: 26px;
+}
+.hero-portrait {
+  position: absolute;
+  inset: 0 10px 0 30px;
+  border-radius: 240px 240px 8px 8px;
+  overflow: hidden;
+  background: #4c494b;
+  isolation: isolate;
+}
+.hero-portrait img {
+  object-position: 50% 40%;
+}
+.hero-portrait:after {
+  content: '';
+  position: absolute;
+  inset: 50% 0 0;
+  background: linear-gradient(transparent, #18111a95);
+  pointer-events: none;
+}
+.portrait-caption {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  z-index: 1;
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.15;
+  color: white;
+}
+.portrait-caption span {
+  display: block;
+}
+.hero-amp {
+  position: absolute;
+  font-family: var(--serif);
+  font-style: italic;
+  left: -127px;
+  top: -30px;
+  font-size: 630px;
+  line-height: 1;
+  color: #e3d8e6;
+  pointer-events: none;
+  z-index: -1;
+}
+.hero-note {
+  position: absolute;
+  right: -40px;
+  top: 48%;
+  width: 135px;
+  height: 135px;
+  background: var(--lilac);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transform: rotate(10deg);
+  z-index: 2;
+  color: var(--ink);
+  box-shadow: 0 5px 15px #30203009;
+}
+.hero-note > span:not(.note-star) {
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1;
+  display: block;
+  text-align: center;
+}
+.note-star {
+  position: absolute;
+  left: 19px;
+  top: 22px;
+  font-size: 24px;
+}
+.vertical-caption {
+  position: absolute;
+  top: 36px;
+  right: -36px;
+  writing-mode: vertical-rl;
+  font-size: 9px;
+  letter-spacing: 1.6px;
+}
+.hero-bottom {
+  position: absolute;
+  bottom: 31px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+}
+.hero-bottom > a,
+.hero-bottom > span {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.scroll-circle {
+  width: 31px;
+  height: 40px;
+  border: 1px solid #cbbec7;
+  border-radius: 30px;
+  display: grid;
+  place-items: center;
+}
+.brand-ribbon {
+  padding: 22px 40px;
+  background: var(--lilac);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 26px;
+  overflow: hidden;
+}
+.brand-ribbon span {
+  white-space: nowrap;
+  font-size: 20px;
+  font-family: var(--serif);
+}
+.brand-ribbon span[aria-hidden] {
+  font-size: 22px;
+}
+.service-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 34px;
+}
+.service-filters > button {
+  border: 1px solid #d8cfd5;
+  background: none;
+  border-radius: 30px;
+  min-height: 42px;
+  padding: 10px 19px;
+  font-size: 11px;
+  transition:
+    background 0.25s,
+    color 0.25s;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.service-filters > button > span {
+  font-size: 9px;
+  opacity: 0.7;
+}
+.service-filters > button.active {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+.service-filters > button:not(.active):hover {
+  background: #ece5ee;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 37px 25px;
+}
+.service-card {
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  min-width: 0;
+  animation: card-in 0.5s ease both;
+}
+.service-image {
+  height: 285px;
+  overflow: hidden;
+  border-radius: 6px;
+  position: relative;
+  background: #e9e3e7;
+}
+.service-image img {
+  transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.service-card:hover img {
+  transform: scale(1.055);
+}
+.service-icon {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  background: #faf8f6e0;
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(6px);
+}
+.service-open {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+  transition:
+    transform 0.3s,
+    background 0.3s;
+}
+.service-card:hover .service-open {
+  transform: rotate(45deg);
+  background: var(--lilac);
+}
+.service-title {
+  margin: 18px 0 5px;
+}
+.service-title h3 {
+  font-size: 30px;
+  line-height: 1.1;
+}
+.service-card > p {
+  font-size: 11px;
+  line-height: 1.7;
+}
+.service-footnote {
+  text-align: center;
+  margin-top: 36px;
+  font-size: 11px;
+}
+.service-footnote button {
+  background: none;
+  border: 0;
+  padding: 0 0 3px;
+  border-bottom: 1px solid #baa9b7;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+  padding-top: 15px;
+}
+.about-art {
+  height: 565px;
+  position: relative;
+  border-radius: 7px 110px 7px 7px;
+  overflow: hidden;
+}
+.about-art > img {
+  filter: sepia(0.09);
+  object-position: 45%;
+}
+.about-stamp {
+  position: absolute;
+  right: 24px;
+  bottom: 38px;
+  border-radius: 60px 60px 6px 6px;
+  background: var(--lilac);
+  padding: 28px 22px 24px;
+  width: 140px;
+  height: 151px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.about-stamp > span {
+  font-family: var(--serif);
+  font-size: 25px;
+  line-height: 1;
+}
+.image-disclaimer {
+  position: absolute;
+  left: 15px;
+  bottom: 12px;
+  color: white;
+  background: #33252e99;
+  border-radius: 3px;
+  padding: 3px 7px;
+  font-size: 8px;
+}
+.about-copy h2 {
+  font-size: 57px;
+  margin-bottom: 27px;
+}
+.about-copy p {
+  font-size: 13px;
+  margin-bottom: 16px;
+  max-width: 430px;
+}
+.about-copy .text-link {
+  margin-top: 9px;
+}
+.hair-art {
+  position: relative;
+  height: 90px;
+  max-width: 400px;
+  color: #aa92ae;
+  margin-top: 33px;
+}
+.hair-art svg:not(.scissor-drawing) {
+  width: 100%;
+  height: 100%;
+}
+.scissor-drawing {
+  position: absolute;
+  right: 32px;
+  top: 20px;
+  transform: rotate(-20deg);
+}
+.family {
+  background: #ede5f1;
+  overflow: hidden;
+}
+.family-header {
+  text-align: center;
+}
+.family-header .section-label {
+  justify-content: center;
+}
+.family-header h2 {
+  font-size: 58px;
+}
+.family-tabs {
+  margin: 33px auto 50px;
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #cdbed2;
+  padding: 5px;
+  border-radius: 40px;
+  width: fit-content;
+}
+.family-tabs button {
+  border: 0;
+  border-radius: 30px;
+  background: transparent;
+  min-height: 43px;
+  padding: 11px 28px;
+  font-size: 12px;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+.family-tabs button.active {
+  background: var(--ink);
+  color: white;
+}
+.family-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 85px;
+  align-items: center;
+  position: relative;
+  animation: card-in 0.45s ease both;
+  max-width: 1000px;
+  margin: auto;
+}
+.family-photo {
+  height: 410px;
+  position: relative;
+  border-radius: 160px 7px 7px 7px;
+  overflow: hidden;
+  z-index: 1;
+}
+.family-photo img {
+  object-position: center 35%;
+}
+.family-photo:after {
+  content: '';
+  position: absolute;
+  inset: 60% 0 0;
+  background: linear-gradient(transparent, #25162799);
+}
+.family-photo-label {
+  position: absolute;
+  bottom: 22px;
+  left: 24px;
+  color: white;
+  font-size: 12px;
+  z-index: 1;
+}
+.family-copy {
+  position: relative;
+  z-index: 1;
+}
+.family-copy h3 {
+  font-size: 43px;
+  line-height: 1.04;
+  margin-bottom: 18px;
+}
+.family-copy p {
+  font-size: 13px;
+}
+.family-copy ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 29px;
+  display: grid;
+  gap: 12px;
+}
+.family-copy li {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.family-copy li svg {
+  color: #8b6c92;
+}
+.family-copy .MuiButton-root {
+  font-size: 11px;
+}
+.family-amp {
+  position: absolute;
+  right: -70px;
+  top: -80px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 610px;
+  line-height: 1;
+  color: #e1d4e7;
+  pointer-events: none;
+}
+.experience {
+  background: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
+}
+.experience-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.experience-top p {
+  color: #c8bac4;
+  font-size: 11px;
+}
+.experience-top .section-label {
+  margin: 0;
+}
+.ritual-tabs {
+  display: flex;
+  gap: 33px;
+  border-bottom: 1px solid #5a4855;
+  margin-top: 40px;
+  padding-bottom: 0;
+}
+.ritual-tabs button {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: #c8bac4;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  min-height: 51px;
+  padding: 0 0 15px;
+  transition: color 0.2s;
+}
+.ritual-tabs button.active {
+  border-color: var(--lilac);
+  color: var(--lilac);
+}
+.ritual-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 95px;
+  align-items: center;
+  margin-top: 53px;
+}
+.ritual-copy {
+  animation: card-in 0.5s ease both;
+}
+.ritual-copy h2 {
+  font-size: 69px;
+  max-width: 460px;
+}
+.ritual-copy > p {
+  margin-top: 24px;
+  max-width: 400px;
+  font-size: 13px;
+  color: #cbbbca;
+}
+.ritual-steps {
+  display: flex;
+  gap: 21px;
+  margin-block: 25px 30px;
+}
+.ritual-steps > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  color: #e1d4df;
+}
+.ritual-step-dot {
+  display: grid;
+  place-items: center;
+  border: 1px solid #8b7189;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 9px;
+}
+.ritual-copy .MuiButton-root {
+  font-size: 11px;
+  padding: 15px 23px;
+}
+.ritual-visual {
+  position: relative;
+  padding: 0 0 0 28px;
+}
+.ritual-photo {
+  height: 475px;
+  border-radius: 6px 170px 6px 6px;
+  overflow: hidden;
+  animation: card-in 0.5s ease both;
+}
+.ritual-photo img {
+  object-position: center 40%;
+}
+.face-illustration {
+  position: absolute;
+  width: 140px;
+  left: -67px;
+  bottom: -19px;
+  color: var(--lilac);
+  background: var(--ink);
+  padding: 14px 12px;
+  border: 1px solid #786277;
+  border-radius: 80px 80px 5px 5px;
+  transform: rotate(-7deg);
+}
+.face-illustration svg {
+  display: block;
+  width: 100%;
+  height: 145px;
+}
+.face-illustration > span {
+  font-size: 8px;
+  text-align: center;
+  display: block;
+}
+.care-values {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 39px;
+  border-top: 1px solid #5a4855;
+  padding-top: 50px;
+  margin-top: 80px;
+}
+.care-values > div > svg {
+  color: var(--lilac);
+  margin-bottom: 18px;
+}
+.care-values h3 {
+  font-size: 25px;
+  margin-bottom: 9px;
+}
+.care-values p {
+  font-size: 11px;
+  color: #c8bac4;
+  line-height: 1.9;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  grid-template-rows: 230px 230px;
+  gap: 17px;
+}
+.gallery-tile {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  background: #e3dbe2;
+  border-radius: 6px;
+  text-align: left;
+  isolation: isolate;
+}
+.gallery-tile-0 {
+  grid-row: span 2;
+}
+.gallery-tile:after {
+  content: '';
+  position: absolute;
+  inset: 35% 0 0;
+  background: linear-gradient(transparent, #21151dbf);
+  z-index: 0;
+}
+.gallery-tile img {
+  transition: transform 0.65s ease;
+}
+.gallery-tile:hover img {
+  transform: scale(1.07);
+}
+.gallery-plus {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 1px solid #ffffff90;
+  border-radius: 50%;
+  color: white;
+  width: 33px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+  transition: background 0.3s;
+}
+.gallery-tile:hover .gallery-plus {
+  background: #ffffff33;
+}
+.gallery-caption {
+  position: absolute;
+  bottom: 23px;
+  left: 22px;
+  color: white;
+  z-index: 1;
+  right: 15px;
+}
+.gallery-caption > span {
+  font-size: 8px;
+  display: block;
+  margin-bottom: 6px;
+}
+.gallery-caption > strong {
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 400;
+}
+.gallery-tile-0 .gallery-caption > strong {
+  font-size: 36px;
+}
+.gallery-note {
+  font-size: 10px;
+  text-align: center;
+  margin-top: 23px;
+}
+.reviews {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 100px;
+  padding-top: 0;
+  padding-bottom: 105px;
+}
+.reviews-intro p {
+  max-width: 370px;
+  margin: 23px 0 15px;
+  font-size: 13px;
+}
+.google-review-card {
+  background: #f0eaf2;
+  border: 1px solid #e1d7e4;
+  border-radius: 10px;
+  padding: 29px 34px;
+}
+.google-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.google-card-top > span:not(.google-mark) {
+  font-size: 12px;
+  font-weight: 500;
+}
+.google-card-top > svg {
+  margin-left: auto;
+  color: #7c657f;
+}
+.rating-display {
+  display: flex;
+  gap: 23px;
+  align-items: center;
+  margin-top: 21px;
+}
+.rating-display > strong {
+  font-family: var(--serif);
+  font-size: 86px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+.rating-display .stars {
+  gap: 4px;
+}
+.rating-display p {
+  font-size: 10px;
+  margin-top: 6px;
+}
+.rating-caption {
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-block: 13px 25px;
+}
+.rating-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #d5c9da;
+  padding-top: 17px;
+}
+.rating-card-bottom > span {
+  font-size: 9px;
+  color: var(--muted);
+}
+.rating-card-bottom > a {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  background: var(--ink);
+  color: white;
+  border-radius: 50%;
+}
+.contact {
+  border-top: 1px solid var(--line);
+  padding-top: 94px;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 47px;
+}
+.contact-details {
+  display: grid;
+  gap: 25px;
+}
+.contact-line {
+  display: flex;
+  gap: 23px;
+  align-items: flex-start;
+}
+.contact-line > svg {
+  width: 20px;
+  flex-shrink: 0;
+  margin-top: 5px;
+  color: #816684;
+}
+.contact-line h3 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+.contact-line p,
+.contact-line address {
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.9;
+  max-width: 360px;
+  color: var(--muted);
+}
+.contact-line .text-link {
+  font-size: 11px;
+  margin-top: 7px;
+}
+.contact-line small {
+  font-size: 9px;
+  color: var(--muted);
+}
+.phone-link {
+  display: block;
+  width: fit-content;
+  font-size: 16px;
+}
+.map-card {
+  min-height: 385px;
+  border-radius: 7px;
+  overflow: hidden;
+  background: #e8e2e7;
+}
+.map-card iframe {
+  display: block;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 385px;
+}
+.map-preview {
+  height: 100%;
+  min-height: 385px;
+  position: relative;
+  overflow: hidden;
+}
+.map-preview > svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.map-pin {
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+}
+.map-pin > svg {
+  width: 46px;
+  height: 46px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 11px;
+  border-radius: 50%;
+}
+.map-pin > span {
+  font-family: var(--serif);
+  font-size: 25px;
+  box-shadow: 0 4px 25px #33252e08;
+  background: var(--paper);
+  padding: 5px 14px;
+  border-radius: 4px;
+}
+.map-preview-footer {
+  position: absolute;
+  bottom: 39px;
+  left: 21px;
+  right: 21px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.map-preview-footer > span {
+  font-size: 10px;
+}
+.map-preview-footer .MuiButton-root {
+  font-size: 10px;
+  padding: 10px 16px;
+  min-height: 40px;
+}
+.map-note {
+  position: absolute;
+  bottom: 15px;
+  left: 21px;
+  font-size: 8px;
+  color: #6a5866;
+}
+.faq {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  margin-top: 112px;
+}
+.faq h2 {
+  font-size: 50px;
+}
+.faq > div > .text-link {
+  margin-top: 20px;
+  font-size: 11px;
+}
+.faq-list {
+  border-top: 1px solid var(--line);
+}
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+.faq-item h3 {
+  font-family: var(--sans);
+  font-size: 12px;
+}
+.faq-item h3 > button {
+  border: 0;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 23px 0;
+  width: 100%;
+  text-align: left;
+  font-weight: 500;
+}
+.faq-item svg {
+  flex-shrink: 0;
+}
+.faq-answer p {
+  font-size: 12px;
+  padding: 0 32px 22px 0;
+  line-height: 1.9;
+}
+.final-cta {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 74px 0 86px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta > .section-shell {
+  position: relative;
+}
+.final-cta p {
+  color: #dbcfda;
+  font-size: 11px;
+  margin: 15px 0 21px;
+}
+.final-cta h2 {
+  font-size: 90px;
+  line-height: 0.96;
+}
+.cta-flower {
+  font-size: 46px;
+  line-height: 1;
+  color: var(--lilac);
+}
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin-top: 37px;
+  position: relative;
+  z-index: 1;
+}
+.cta-actions .MuiButton-root {
+  font-size: 11px;
+  padding: 16px 24px;
+}
+.cta-actions .quiet-link {
+  font-size: 11px;
+}
+.cta-line {
+  position: absolute;
+  inset: 20px 0;
+  border: 1px solid #a78bab30;
+  border-radius: 50%;
+  transform: rotate(-16deg);
+  pointer-events: none;
+}
+.footer {
+  padding-top: 45px;
+  padding-bottom: 25px;
+}
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding-bottom: 35px;
+}
+.footer-top p {
+  font-size: 11px;
+}
+.footer-top > .text-link {
+  font-size: 10px;
+  border: 0;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 23px;
+  border-top: 1px solid var(--line);
+  gap: 20px;
+  font-size: 9px;
+  color: var(--muted);
+}
+.footer-bottom > span:nth-child(2),
+.footer-bottom > a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.floating-whatsapp {
+  position: fixed;
+  z-index: 1100;
+  bottom: 24px;
+  right: 25px;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #245d43;
+  color: white;
+  border: 3px solid var(--paper);
+  box-shadow: 0 4px 18px #15281a24;
+  transition:
+    transform 0.25s,
+    background 0.25s;
+  animation: whatsapp-in 0.7s 1.5s both;
+}
+.floating-whatsapp:hover {
+  transform: translateY(-4px);
+  background: #184b34;
+}
+.whatsapp-tooltip {
+  position: absolute;
+  right: 63px;
+  white-space: nowrap;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 11px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 3px 20px #33252e15;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: 0.2s;
+  pointer-events: none;
+}
+.floating-whatsapp:hover .whatsapp-tooltip,
+.floating-whatsapp:focus-visible .whatsapp-tooltip {
+  opacity: 1;
+  transform: none;
+}
+.mobile-menu.MuiDrawer-paper {
+  width: min(380px, 100%);
+  padding: 24px;
+  background: var(--paper);
+}
+.menu-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.mobile-menu nav {
+  display: grid;
+  margin-top: 30px;
+}
+.mobile-menu nav > a {
+  font-family: var(--serif);
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0;
+}
+.menu-bottom {
+  margin-top: auto;
+  padding-top: 45px;
+}
+.menu-bottom p {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 18px;
+  font-size: 12px;
+}
+.menu-bottom .MuiButton-root {
+  margin-top: 8px;
+}
+.booking-loading {
+  position: fixed;
+  z-index: 1400;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--paper);
+  box-shadow: 0 8px 60px #33252e30;
+  border-radius: 20px;
+  padding: 30px;
+  font-size: 14px;
+}
+.booking-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 19px 0 30px;
+}
+.booking-header > span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.booking-dialog .MuiDialogContent-root {
+  padding: 18px 32px 32px;
+}
+.booking-dialog h2 {
+  font-size: 44px;
+  line-height: 1.03;
+  letter-spacing: -1px;
+  margin-bottom: 13px;
+}
+.booking-intro {
+  font-size: 12px;
+  margin-bottom: 25px;
+  max-width: 430px;
+}
+.booking-fields {
+  display: grid;
+  gap: 20px;
+  padding-top: 3px;
+}
+.booking-fields .MuiInputBase-root {
+  font-size: 13px;
+}
+.booking-fields .MuiInputLabel-root {
+  font-size: 13px;
+}
+.booking-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 14px;
+}
+.booking-privacy {
+  font-size: 10px;
+  line-height: 1.75;
+  margin: 20px 0;
+}
+.booking-review {
+  display: grid;
+  gap: 16px;
+}
+.booking-review dl {
+  margin: 0;
+  padding: 5px 20px;
+  background: #f0eaf2;
+  border-radius: 12px;
+}
+.booking-review dl > div {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 15px;
+  padding: 17px 0;
+  border-bottom: 1px solid #e0d4e2;
+}
+.booking-review dl > div:last-child {
+  border: 0;
+}
+.booking-review dt {
+  font-size: 11px;
+  color: var(--muted);
+}
+.booking-review dd {
+  font-size: 12px;
+  margin: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+}
+.booking-review .MuiAlert-message {
+  font-size: 11px;
+}
+.booking-review > .MuiButton-text {
+  justify-self: start;
+  font-size: 11px;
+}
+.gallery-dialog .MuiDialog-paper {
+  background: var(--ink);
+  color: white;
+  overflow: hidden;
+}
+.lightbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 15px 8px 22px;
+  font-size: 11px;
+}
+.lightbox-header .MuiIconButton-root {
+  color: white;
+}
+.lightbox-image {
+  height: min(68vh, 670px);
+  position: relative;
+  background: #251d24;
+}
+.lightbox-image img {
+  object-fit: contain;
+  animation: card-in 0.3s ease both;
+}
+.lightbox-image > .MuiIconButton-root {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #faf8f6ed;
+  color: var(--ink);
+}
+.lightbox-image > .lightbox-prev {
+  left: 15px;
+}
+.lightbox-image > .lightbox-next {
+  right: 15px;
+}
+.lightbox-caption {
+  padding: 18px 25px 23px;
+}
+.lightbox-caption h3 {
+  font-size: 31px;
+}
+.lightbox-caption p {
+  font-size: 10px;
+  color: #c7b9c5;
+  margin-top: 5px;
+}
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes whatsapp-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (min-width: 1600px) {
+  .hero {
+    min-height: 860px;
+    padding-top: 165px;
+  }
+  .hero-visual {
+    height: 595px;
+  }
+  .hero h1 {
+    font-size: 130px;
+  }
+  .hero-intro {
+    font-size: 15px;
+  }
+  .hero-location {
+    font-size: 12px;
+  }
+  .hero-actions .MuiButton-root,
+  .hero-actions .quiet-link {
+    font-size: 12px;
+  }
+  .hero-social {
+    margin-top: 46px;
+  }
+}
+@media (max-width: 1150px) {
+  .section-shell {
+    width: calc(100% - 80px);
+  }
+  .nav-inner {
+    width: calc(100% - 64px);
+    gap: 20px;
+  }
+  .desktop-nav {
+    gap: 18px;
+  }
+  .desktop-nav a {
+    font-size: 10px;
+  }
+  .hero {
+    gap: 20px;
+    min-height: 745px;
+    padding-top: 145px;
+  }
+  .hero h1 {
+    font-size: 94px;
+  }
+  .hero-visual {
+    height: 500px;
+    margin-right: 20px;
+  }
+  .hero-portrait {
+    inset: 0 5px 0 15px;
+  }
+  .hero-note {
+    width: 115px;
+    height: 115px;
+    right: -32px;
+  }
+  .hero-note > span:not(.note-star) {
+    font-size: 18px;
+  }
+  .hero-amp {
+    font-size: 550px;
+    left: -110px;
+  }
+  .hero-location {
+    font-size: 9px;
+  }
+  .hero-actions {
+    gap: 16px;
+  }
+  .hero-actions .MuiButton-root {
+    padding: 15px 18px;
+  }
+  .about {
+    gap: 60px;
+  }
+  .about-copy h2 {
+    font-size: 51px;
+  }
+  .family-content {
+    gap: 60px;
+  }
+  .ritual-layout {
+    gap: 67px;
+  }
+  .ritual-copy h2 {
+    font-size: 59px;
+  }
+  .service-image {
+    height: 260px;
+  }
+  .reviews {
+    gap: 60px;
+  }
+  .contact-grid {
+    gap: 40px;
+  }
+  .care-values {
+    gap: 25px;
+  }
+  .care-values h3 {
+    font-size: 23px;
+  }
+}
+@media (max-width: 900px) {
+  .desktop-nav {
+    display: none;
+  }
+  .nav-actions .menu-toggle {
+    display: inline-flex;
+  }
+  .section-shell {
+    width: calc(100% - 64px);
+  }
+  .nav-inner {
+    height: 82px;
+  }
+  .hero {
+    min-height: 710px;
+    padding-top: 128px;
+    padding-bottom: 95px;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 13px;
+  }
+  .hero h1 {
+    font-size: 77px;
+    letter-spacing: -3px;
+  }
+  .hero-visual {
+    height: 460px;
+  }
+  .hero-note {
+    width: 101px;
+    height: 101px;
+    right: -23px;
+  }
+  .hero-note > svg {
+    width: 22px;
+  }
+  .hero-note > span:not(.note-star) {
+    font-size: 16px;
+  }
+  .note-star {
+    font-size: 18px;
+    left: 12px;
+    top: 17px;
+  }
+  .hero-intro {
+    font-size: 12px;
+  }
+  .hero-actions {
+    gap: 9px;
+    margin-top: 23px;
+  }
+  .hero-actions .MuiButton-root {
+    font-size: 10px;
+    padding: 14px 17px;
+  }
+  .hero-actions .quiet-link {
+    font-size: 10px;
+  }
+  .hero-social {
+    margin-top: 26px;
+  }
+  .hero-amp {
+    font-size: 440px;
+    left: -75px;
+    top: 15px;
+  }
+  .vertical-caption {
+    right: -25px;
+    font-size: 8px;
+  }
+  .portrait-caption {
+    font-size: 22px;
+    bottom: 25px;
+    left: 24px;
+  }
+  .brand-ribbon {
+    gap: 18px;
+    padding: 19px 20px;
+  }
+  .brand-ribbon span {
+    font-size: 17px;
+  }
+  .brand-ribbon span[aria-hidden] {
+    font-size: 18px;
+  }
+  .section-space {
+    padding-block: 85px;
+  }
+  .section-heading {
+    gap: 30px;
+  }
+  .section-heading h2 {
+    font-size: 46px;
+  }
+  .section-heading-aside p {
+    font-size: 11px;
+  }
+  .service-grid {
+    gap: 30px 18px;
+  }
+  .service-image {
+    height: 225px;
+  }
+  .service-title h3 {
+    font-size: 25px;
+  }
+  .service-card > p {
+    font-size: 10px;
+  }
+  .about {
+    gap: 40px;
+    padding-top: 5px;
+  }
+  .about-art {
+    height: 460px;
+  }
+  .about-copy h2 {
+    font-size: 44px;
+  }
+  .about-copy p {
+    font-size: 11px;
+  }
+  .about-stamp {
+    width: 115px;
+    height: 130px;
+    right: 20px;
+    bottom: 35px;
+    padding: 25px 12px 20px;
+  }
+  .about-stamp > span {
+    font-size: 23px;
+  }
+  .hair-art {
+    margin-top: 20px;
+    height: 65px;
+  }
+  .family-header h2 {
+    font-size: 47px;
+  }
+  .family-photo {
+    height: 370px;
+  }
+  .family-content {
+    gap: 40px;
+  }
+  .family-copy h3 {
+    font-size: 38px;
+  }
+  .family-copy p,
+  .family-copy li {
+    font-size: 11px;
+  }
+  .family-copy ul {
+    gap: 10px;
+  }
+  .ritual-layout {
+    gap: 47px;
+  }
+  .ritual-copy h2 {
+    font-size: 50px;
+  }
+  .ritual-copy > p {
+    font-size: 11px;
+  }
+  .ritual-photo {
+    height: 420px;
+  }
+  .face-illustration {
+    width: 110px;
+    left: -34px;
+  }
+  .face-illustration svg {
+    height: 118px;
+  }
+  .face-illustration > span {
+    font-size: 7px;
+  }
+  .ritual-steps {
+    gap: 11px;
+  }
+  .ritual-steps > span {
+    font-size: 9px;
+    gap: 5px;
+  }
+  .care-values {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px 50px;
+    margin-top: 65px;
+    padding-top: 40px;
+  }
+  .care-values p {
+    max-width: 280px;
+  }
+  .gallery-grid {
+    grid-template-rows: 195px 195px;
+    gap: 12px;
+  }
+  .gallery-caption {
+    left: 16px;
+    bottom: 18px;
+  }
+  .gallery-caption > strong {
+    font-size: 22px;
+  }
+  .gallery-tile-0 .gallery-caption > strong {
+    font-size: 30px;
+  }
+  .gallery-caption > span {
+    font-size: 7px;
+  }
+  .reviews {
+    gap: 40px;
+    padding-bottom: 80px;
+  }
+  .reviews-intro h2 {
+    font-size: 48px;
+  }
+  .reviews-intro p {
+    font-size: 11px;
+  }
+  .google-review-card {
+    padding: 25px;
+  }
+  .rating-display {
+    gap: 15px;
+  }
+  .rating-display > strong {
+    font-size: 72px;
+  }
+  .rating-display .stars svg {
+    width: 16px;
+  }
+  .rating-display p {
+    font-size: 8px;
+  }
+  .rating-caption {
+    font-size: 27px;
+  }
+  .contact-grid {
+    gap: 30px;
+  }
+  .contact-line {
+    gap: 14px;
+  }
+  .contact-line h3 {
+    font-size: 24px;
+  }
+  .contact-line address,
+  .contact-line p {
+    font-size: 11px;
+  }
+  .map-preview-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .map-pin {
+    left: 30%;
+    top: 28%;
+  }
+  .faq {
+    gap: 45px;
+    margin-top: 85px;
+  }
+  .faq h2 {
+    font-size: 43px;
+  }
+  .faq-item h3 {
+    font-size: 11px;
+  }
+  .faq-answer p {
+    font-size: 11px;
+  }
+  .final-cta h2 {
+    font-size: 80px;
+  }
+  .footer-bottom > span:nth-child(2) {
+    display: none;
+  }
+}
+@media (max-width: 650px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+  .section-shell {
+    width: calc(100% - 40px);
+  }
+  .section-space {
+    padding-block: 65px;
+  }
+  .nav-inner {
+    width: calc(100% - 32px);
+    height: 76px;
+    gap: 10px;
+  }
+  .is-scrolled .nav-inner {
+    height: 68px;
+  }
+  .brand {
+    gap: 9px;
+  }
+  .brand-symbol {
+    font-size: 28px;
+    letter-spacing: -3px;
+  }
+  .brand-symbol > span {
+    font-size: 33px;
+  }
+  .brand-name {
+    font-size: 9px;
+    padding-left: 10px;
+    gap: 2px;
+  }
+  .brand-name > span {
+    font-size: 8px;
+    letter-spacing: 0.9px;
+  }
+  .nav-actions {
+    gap: 4px;
+  }
+  .nav-actions .MuiButton-root {
+    font-size: 9px;
+    padding: 10px 15px;
+    min-height: 39px;
+  }
+  .nav-actions .MuiButton-endIcon {
+    display: none;
+  }
+  .nav-actions .menu-toggle {
+    width: 37px;
+    height: 42px;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 39px;
+    padding-top: 111px;
+    padding-bottom: 90px;
+    min-height: 0;
+    overflow: visible;
+  }
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-location {
+    font-size: 9px;
+    margin-bottom: 19px;
+    gap: 7px;
+  }
+  .tiny-spark {
+    font-size: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(78px, 17.8vw, 111px);
+    letter-spacing: -3px;
+    line-height: 0.89;
+  }
+  .hero-heading-line {
+    padding-bottom: 11px;
+  }
+  .hero-intro {
+    font-size: 12px;
+    line-height: 1.9;
+    margin-top: 17px;
+  }
+  .desktop-break {
+    display: none;
+  }
+  .hero-actions {
+    margin-top: 23px;
+    gap: 22px;
+    flex-wrap: nowrap;
+  }
+  .hero-actions .MuiButton-root {
+    font-size: 10px;
+    padding: 15px 19px;
+    min-height: 48px;
+  }
+  .hero-actions .quiet-link {
+    font-size: 10px;
+    gap: 7px;
+    white-space: nowrap;
+  }
+  .hero-social {
+    margin-top: 25px;
+    gap: 10px;
+  }
+  .google-mark {
+    font-size: 28px;
+  }
+  .review-small {
+    font-size: 8px;
+  }
+  .hero-visual {
+    height: 435px;
+    width: calc(100% - 24px);
+    margin: 0 6px 0 0;
+    max-width: 440px;
+    justify-self: center;
+  }
+  .hero-portrait {
+    inset: 0 12px 0 18px;
+    border-radius: 200px 200px 7px 7px;
+  }
+  .hero-amp {
+    left: -31px;
+    top: -22px;
+    font-size: 470px;
+    z-index: -1;
+  }
+  .hero-note {
+    right: -16px;
+    top: 55%;
+    width: 105px;
+    height: 105px;
+  }
+  .hero-note > span:not(.note-star) {
+    font-size: 17px;
+  }
+  .hero-portrait img {
+    object-position: center 40%;
+  }
+  .portrait-caption {
+    font-size: 24px;
+  }
+  .vertical-caption {
+    right: -17px;
+    top: 48px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .hero-bottom {
+    bottom: 23px;
+    font-size: 9px;
+  }
+  .hero-bottom > span {
+    font-size: 8px;
+    gap: 5px;
+  }
+  .hero-bottom a {
+    gap: 8px;
+  }
+  .scroll-circle {
+    height: 35px;
+    width: 28px;
+  }
+  .brand-ribbon {
+    padding: 19px 20px;
+    gap: 24px;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+  .brand-ribbon span {
+    font-size: 19px;
+  }
+  .brand-ribbon span:nth-child(n + 6) {
+    display: none;
+  }
+  .section-label {
+    font-size: 10px;
+    margin-bottom: 17px;
+  }
+  .section-heading {
+    display: block;
+    margin-bottom: 28px;
+  }
+  .section-heading h2 {
+    font-size: 46px;
+    max-width: 330px;
+    letter-spacing: -1.5px;
+  }
+  .section-heading-aside {
+    padding: 0;
+    margin-top: 18px;
+  }
+  .section-heading-aside p {
+    font-size: 12px;
+  }
+  .section-heading-aside .text-link {
+    font-size: 10px;
+    min-height: 32px;
+  }
+  .service-filters {
+    overflow: auto;
+    gap: 6px;
+    margin-bottom: 27px;
+    padding: 4px 2px 8px;
+    scrollbar-width: none;
+  }
+  .service-filters::-webkit-scrollbar {
+    display: none;
+  }
+  .service-filters > button {
+    flex-shrink: 0;
+    font-size: 10px;
+    min-height: 40px;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+  .service-filters > button > span {
+    font-size: 8px;
+  }
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 27px 13px;
+  }
+  .service-image {
+    height: 225px;
+    border-radius: 5px;
+  }
+  .service-icon {
+    width: 31px;
+    height: 31px;
+    top: 11px;
+    left: 11px;
+  }
+  .service-icon svg {
+    width: 17px;
+  }
+  .service-open {
+    width: 31px;
+    height: 31px;
+    bottom: 11px;
+    right: 11px;
+  }
+  .service-open svg {
+    width: 18px;
+  }
+  .service-title {
+    margin-top: 14px;
+  }
+  .service-title h3 {
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+  .service-card > p {
+    font-size: 9px;
+    line-height: 1.8;
+  }
+  .service-footnote {
+    font-size: 10px;
+    margin-top: 27px;
+    line-height: 2;
+  }
+  .service-footnote button {
+    font-size: 10px;
+  }
+  .about {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding-top: 0;
+  }
+  .about-art {
+    height: 420px;
+    border-radius: 6px 95px 6px 6px;
+  }
+  .about-stamp {
+    height: 137px;
+    width: 123px;
+    bottom: 35px;
+  }
+  .about-copy h2 {
+    font-size: 48px;
+    letter-spacing: -1.5px;
+    margin-bottom: 22px;
+  }
+  .about-copy p {
+    font-size: 12px;
+    max-width: none;
+  }
+  .about-copy .text-link {
+    font-size: 11px;
+    margin-top: 3px;
+  }
+  .hair-art {
+    height: 64px;
+    max-width: 340px;
+    margin-top: 20px;
+  }
+  .family-header {
+    text-align: left;
+  }
+  .family-header .section-label {
+    justify-content: flex-start;
+  }
+  .family-header h2 {
+    font-size: 46px;
+    letter-spacing: -1.5px;
+    max-width: 330px;
+  }
+  .family-tabs {
+    margin: 26px 0 29px;
+    gap: 0;
+    padding: 4px;
+    width: 100%;
+    max-width: 420px;
+  }
+  .family-tabs button {
+    font-size: 10px;
+    min-height: 40px;
+    flex: 1;
+    padding: 10px 9px;
+    white-space: nowrap;
+  }
+  .family-content {
+    grid-template-columns: 1fr;
+    gap: 31px;
+  }
+  .family-photo {
+    height: 340px;
+    border-radius: 125px 6px 6px 6px;
+  }
+  .family-copy h3 {
+    font-size: 41px;
+  }
+  .family-copy p {
+    font-size: 12px;
+  }
+  .family-copy li {
+    font-size: 11px;
+  }
+  .family-copy ul {
+    gap: 13px;
+    margin: 21px 0 26px;
+  }
+  .family-amp {
+    right: -32px;
+    font-size: 420px;
+    top: 335px;
+  }
+  .family-copy .MuiButton-root {
+    min-height: 46px;
+  }
+  .experience-top {
+    display: block;
+  }
+  .experience-top .section-label {
+    margin-bottom: 12px;
+  }
+  .experience-top p {
+    font-size: 11px;
+  }
+  .ritual-tabs {
+    gap: 0;
+    justify-content: space-between;
+    margin-top: 23px;
+  }
+  .ritual-tabs button {
+    font-size: 10px;
+    gap: 7px;
+    padding-bottom: 14px;
+    min-height: 48px;
+  }
+  .ritual-tabs button svg {
+    width: 16px;
+  }
+  .ritual-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    margin-top: 31px;
+  }
+  .ritual-copy h2 {
+    font-size: 52px;
+    max-width: 340px;
+  }
+  .ritual-copy > p {
+    font-size: 12px;
+    line-height: 1.9;
+    max-width: 400px;
+    margin-top: 22px;
+  }
+  .ritual-steps {
+    gap: 23px;
+    margin-top: 24px;
+  }
+  .ritual-steps > span {
+    font-size: 10px;
+  }
+  .ritual-copy .MuiButton-root {
+    font-size: 11px;
+  }
+  .ritual-visual {
+    padding-left: 25px;
+    margin-left: 10px;
+  }
+  .ritual-photo {
+    height: 390px;
+    border-radius: 5px 135px 5px 5px;
+  }
+  .face-illustration {
+    left: -20px;
+    bottom: -17px;
+    width: 122px;
+  }
+  .face-illustration svg {
+    height: 135px;
+  }
+  .face-illustration > span {
+    font-size: 7px;
+  }
+  .care-values {
+    gap: 30px 23px;
+    margin-top: 61px;
+    padding-top: 35px;
+  }
+  .care-values > div > svg {
+    width: 21px;
+    margin-bottom: 13px;
+  }
+  .care-values h3 {
+    font-size: 24px;
+    line-height: 1.05;
+    margin-bottom: 11px;
+  }
+  .care-values p {
+    font-size: 10px;
+    line-height: 1.9;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 300px 220px 220px;
+    gap: 12px;
+  }
+  .gallery-tile-0 {
+    grid-row: 1;
+    grid-column: span 2;
+  }
+  .gallery-tile-0 img {
+    object-position: center 28%;
+  }
+  .gallery-tile-0 .gallery-caption > strong {
+    font-size: 31px;
+  }
+  .gallery-caption > strong {
+    font-size: 23px;
+  }
+  .gallery-caption {
+    left: 14px;
+    right: 10px;
+    bottom: 17px;
+  }
+  .gallery-caption > span {
+    font-size: 7px;
+  }
+  .gallery-plus {
+    width: 29px;
+    height: 29px;
+    top: 12px;
+    right: 12px;
+  }
+  .gallery-plus svg {
+    width: 16px;
+  }
+  .gallery-note {
+    font-size: 9px;
+    line-height: 1.9;
+    text-align: left;
+    margin-top: 17px;
+  }
+  .reviews {
+    grid-template-columns: 1fr;
+    gap: 31px;
+    padding-bottom: 65px;
+  }
+  .reviews-intro h2 {
+    font-size: 48px;
+  }
+  .reviews-intro p {
+    font-size: 12px;
+    margin: 21px 0 12px;
+  }
+  .reviews-intro .text-link {
+    font-size: 11px;
+  }
+  .google-review-card {
+    padding: 27px;
+  }
+  .rating-display > strong {
+    font-size: 88px;
+  }
+  .rating-display {
+    gap: 24px;
+  }
+  .rating-display .stars svg {
+    width: 20px;
+  }
+  .rating-display p {
+    font-size: 10px;
+  }
+  .rating-caption {
+    font-size: 33px;
+  }
+  .contact {
+    padding-top: 62px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 31px;
+    margin-top: 31px;
+  }
+  .contact-details {
+    gap: 26px;
+  }
+  .contact-line {
+    gap: 20px;
+  }
+  .contact-line address,
+  .contact-line p {
+    font-size: 12px;
+  }
+  .contact-line h3 {
+    font-size: 27px;
+  }
+  .contact-line small {
+    font-size: 9px;
+  }
+  .contact-line .text-link {
+    font-size: 11px;
+  }
+  .map-card,
+  .map-card iframe,
+  .map-preview {
+    min-height: 330px;
+  }
+  .map-preview-footer {
+    flex-direction: row;
+    align-items: center;
+  }
+  .map-preview-footer > span {
+    font-size: 9px;
+  }
+  .map-preview-footer .MuiButton-root {
+    font-size: 9px;
+    padding: 10px 13px;
+  }
+  .map-pin {
+    left: 34%;
+    top: 28%;
+  }
+  .map-pin > span {
+    font-size: 24px;
+  }
+  .faq {
+    grid-template-columns: 1fr;
+    gap: 31px;
+    margin-top: 65px;
+  }
+  .faq h2 {
+    font-size: 47px;
+  }
+  .faq h2 br {
+    display: none;
+  }
+  .faq > div > .text-link {
+    margin-top: 13px;
+    font-size: 10px;
+  }
+  .faq-item h3 {
+    font-size: 12px;
+  }
+  .faq-answer p {
+    font-size: 11px;
+  }
+  .faq-item h3 > button {
+    padding: 21px 0;
+  }
+  .final-cta {
+    padding-block: 63px 67px;
+  }
+  .final-cta h2 {
+    font-size: 69px;
+  }
+  .final-cta p {
+    font-size: 10px;
+    margin: 16px 0 21px;
+  }
+  .cta-flower {
+    font-size: 36px;
+  }
+  .cta-actions {
+    gap: 21px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+  .cta-actions .MuiButton-root {
+    font-size: 10px;
+    padding: 15px 19px;
+  }
+  .cta-actions .quiet-link {
+    font-size: 10px;
+  }
+  .cta-line {
+    inset: 36px -40px;
+    transform: rotate(-28deg);
+  }
+  .footer {
+    padding-top: 34px;
+    padding-bottom: 85px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 22px;
+    align-items: start;
+    padding-bottom: 26px;
+  }
+  .footer-top p {
+    grid-row: 2;
+    font-size: 10px;
+  }
+  .footer-top > .text-link {
+    font-size: 9px;
+    justify-self: end;
+  }
+  .footer-bottom {
+    font-size: 8px;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .footer-bottom > span:first-child {
+    max-width: 170px;
+    line-height: 1.8;
+  }
+  .footer-bottom > a {
+    font-size: 9px;
+    white-space: nowrap;
+  }
+  .floating-whatsapp {
+    bottom: max(18px, env(safe-area-inset-bottom));
+    right: 18px;
+    width: 52px;
+    height: 52px;
+  }
+  .booking-header {
+    padding: 15px 14px 0 22px;
+  }
+  .booking-dialog .MuiDialogContent-root {
+    padding: 20px 22px 28px;
+  }
+  .booking-dialog h2 {
+    font-size: 43px;
+  }
+  .booking-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .booking-fields {
+    gap: 20px;
+  }
+  .booking-review dl > div {
+    grid-template-columns: 83px 1fr;
+  }
+  .lightbox-header {
+    font-size: 9px;
+    padding-left: 16px;
+  }
+  .lightbox-caption h3 {
+    font-size: 28px;
+  }
+  .lightbox-caption {
+    padding: 16px 20px 22px;
+  }
+  .lightbox-image {
+    height: 60vh;
+  }
+  .lightbox-image > .MuiIconButton-root {
+    width: 37px;
+    height: 37px;
+  }
+  .lightbox-image > .lightbox-prev {
+    left: 8px;
+  }
+  .lightbox-image > .lightbox-next {
+    right: 8px;
+  }
+}
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 76px;
+  }
+  .hero-location {
+    font-size: 8px;
+  }
+  .hero-actions {
+    gap: 14px;
+  }
+  .hero-actions .MuiButton-root {
+    font-size: 9px;
+    padding: 14px 16px;
+  }
+  .hero-actions .quiet-link {
+    font-size: 9px;
+  }
+  .hero-visual {
+    height: 390px;
+  }
+  .hero-amp {
+    font-size: 405px;
+    left: -25px;
+  }
+  .service-image {
+    height: 185px;
+  }
+  .service-title h3 {
+    font-size: 22px;
+  }
+  .service-card > p {
+    font-size: 8px;
+  }
+  .brand-name {
+    font-size: 8px;
+  }
+  .brand-name > span {
+    font-size: 7px;
+  }
+  .nav-actions .MuiButton-root {
+    padding: 10px 12px;
+  }
+  .section-heading h2,
+  .family-header h2 {
+    font-size: 42px;
+  }
+  .ritual-tabs button {
+    font-size: 9px;
+    gap: 5px;
+  }
+  .care-values h3 {
+    font-size: 22px;
+  }
+  .contact .section-heading h2 {
+    font-size: 42px;
+  }
+  .cta-actions {
+    gap: 16px;
+  }
+  .cta-actions .MuiButton-root {
+    font-size: 9px;
+  }
+  .cta-actions .quiet-link {
+    font-size: 9px;
+  }
+  .map-preview-footer {
+    left: 15px;
+    right: 15px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .floating-whatsapp {
+    animation: none;
+  }
+}
+
+/* Keep service descriptions comfortable to read on compact screens. */
+.service-card > p {
+  font-size: 12px;
+}
+@media (max-width: 650px) {
+  .service-card > p {
+    font-size: 11px;
+  }
+  .care-values p {
+    font-size: 11px;
+  }
+  .gallery-note {
+    font-size: 10px;
+  }
+  .contact-line small {
+    font-size: 10px;
+  }
+}
